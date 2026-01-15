@@ -1,0 +1,496 @@
+:root {
+  /* カラーパレット */
+  --color-primary: #1F2A44;
+  --color-secondary: #681F2A;
+  --color-accent: #C9A85B;
+
+  --color-bg-base: #FAF7F2;
+  --color-text-main: #333333;
+  --color-text-sub: #666666;
+  --color-border: #EAEAEA;
+  --color-other: #FFFFFF;
+}
+
+/* 全体設定 */
+body {
+  margin: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  color: var(--color-text-main);
+  background-color: var(--color-bg-base);
+  line-height: 1.7;
+  letter-spacing: 0.03em;
+}
+
+section {
+  padding: 96px 0;
+  text-align: center;
+}
+
+section:first-of-type {
+  padding-top: 0;
+}
+
+section:not(:first-child)::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--color-border);
+  margin: 0 auto 80px;
+}
+
+
+section h2{
+  font-weight: normal;
+  font-size: 32px;
+  letter-spacing: 0.025em;
+  margin-bottom: 32px;
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ボタン */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 14px;
+  background: var(--color-primary);
+  color: var(--color-bg-base);
+  text-decoration: none;
+  font-size: 14px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.btn--small {
+  padding: 8px 20px;
+  font-size: 12px;
+}
+
+
+/* ヘッダー */
+.header {
+  width: 100%;
+  height: 70px;
+  background: var(--color-primary);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.header .header-inner {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-bg-base);
+}
+
+.logo .logo-main {
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  letter-spacing: 0.18em;
+}
+
+.logo .logo-sub {
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+
+.header .nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  color: var(--color-bg-base);
+  font-size: 14px;
+  z-index: 10;
+}
+
+.header .nav a {
+  text-decoration: none;
+  color: var(--color-bg-base);
+  position: relative;
+}
+
+.header .nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: var(--color-bg-base);
+  transition: width 0.3s ease;
+}
+
+.header.nav a:hover::after {
+  width: 100%;
+}
+
+
+/* ヒーローセクション */
+.hero {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  animation: heroZoom 18s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes heroZoom {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(31,42,68,0.55),
+    rgba(0,0,0,0.25)
+  );
+  z-index: 1;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  max-width: 520px;
+  padding-left: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-bg-base);
+}
+
+.hero-catch {
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  opacity: 0.85;
+  margin-bottom: 14px;
+}
+
+.hero-text h1 {
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  animation: heroTextFade 1.8s ease forwards;
+}
+
+.hero-text h1 span {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+@keyframes heroTextFade {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 特徴 */
+.concept-text {
+  max-width: 640px;
+  margin: 0 auto 72px;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  gap: 32px 40px;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.feature {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.feature--primary {
+  color:var(--color-bg-base);
+  font-weight:600;
+  background-color: rgba(107, 31, 42, 0.85); /* primary用 */
+}
+
+.feature--secondary {
+  border: 1px solid var(--color-accent);
+  color: var(--color-bg-base);
+  background-color: rgba(201, 168, 91, 0.85);
+  font-weight: 600;
+ }
+
+/* ギャラリー */
+.gallery {
+ height: 40px;
+ background-image: url(../images/hotelroby.jpg);
+ background-size: cover;
+ background-position: center;
+ background-repeat: no-repeat;
+ padding: 160px 0;
+ margin: 0;
+}
+
+
+/* ツアー紹介 */
+.tour-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  color: var(--color-other);
+}
+
+.tour-cards .card {
+  width: 260px;             
+  display: flex;
+  flex-direction: column;
+  background: var(--color-other);
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  border: 1px solid var(--color-border);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.card h3 {
+  color: var(--color-text-main);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.card p {
+   flex-grow: 1;
+  margin: 0 15px 10px;
+}
+.card .price {
+  color: var(--color-secondary);
+  font-weight: normal;
+  font-size: 14px;
+}
+.card .btn--small {
+  width:160px;
+  align-self: center;
+  background: var(--color-primary);
+  color: var(--color-bg-base);
+  padding: 8px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+
+/* お客様の声（スライダー） */
+#voice{
+  padding-bottom: 120px;
+}
+
+.slider {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.slide {
+  display: none;
+  font-size: 1.1rem;
+}
+.slide.active {
+  display: block;
+  animation: fadeIn 1s ease;
+}
+
+
+/* お問い合わせ */
+#contact {
+  padding-top: 120px;
+}
+
+.contact form {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+  
+}
+.contact label {
+  display: block;
+  margin: 15px 0 5px;
+}
+.contact input,
+.contact select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+}
+
+.contact .btn {
+  background: var(--color-primary);
+  color: var(--color-bg-base);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* フッター */
+.footer {
+  background: var(--color-primary);
+  color: var(--color-other);
+  padding: 32px 0;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-sns a {
+  color: var(--color-border);
+  margin-left: 16px;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.footer-sns a:hover {
+  color: var(--color-other);
+}
+
+
+/* フェードイン */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ローディング */
+#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(250, 250, 250, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+/* スピナー */
+#loading .spinner {
+  width: 70px;
+  height: 70px;
+  border: 3px solid var(--color-border);
+  border-top: 3px solid var(--color-secondary);
+  border-radius: 50%;
+  animation: spin 4.3s linear infinite;
+  margin-bottom: 24px;
+}
+
+#loading p{
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 0;
+  color: var(--color-text-sub);
+  letter-spacing: 0.08em;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+#loading.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+.hidden {
+  display: none;
+}
+
+
+.show {
+  display: block;
+}
+
+.hamburger {
+  display: none;
+}
+
+.sp-nav {
+  display: none;
+}
+
