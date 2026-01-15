@@ -28,7 +28,7 @@ https://colorful-flower.github.io/HERITAGE-LUXURY-JOURNEY/
      スクロール制御
 
 【工夫したポイント】
-1. ターゲットを意識したUI設
+1. ターゲットを意識したUI設計
 ⚫︎落ち着いた配色・余白設計
 ⚫︎小さすぎない文字サイズ
 ⚫︎「派手さ」よりも「信頼感」を優先
